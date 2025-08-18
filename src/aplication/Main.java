@@ -1,11 +1,12 @@
 package aplication;
+import entities.Catalogo;
 import entities.Usuario;
 import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        String[] opcoes = { "Adicionar", "Listar", "Atualizar", "Remover", "Sair" };
+        String[] opcoes = { "Adicionar", "Lista de Musicas", "Atualizar", "Remover", "Sair" };
         int escolha = -1;
         Usuario usuario = new Usuario();
         usuario.cadastrastro();
@@ -17,7 +18,7 @@ public class Main {
                     JOptionPane.DEFAULT_OPTION,
                     JOptionPane.QUESTION_MESSAGE,
                     null,opcoes,opcoes[0]
-                     // kaique : ai agente so coloca como eu fiz com o teste tipo o metodo adciona ai o main vai fica bem organizado
+
             );
 
             if (escolha == 0) {
@@ -25,7 +26,10 @@ public class Main {
 
             }
             else if (escolha == 1) {
-                JOptionPane.showMessageDialog(null, "Você escolheu: Listar");
+                JOptionPane.showMessageDialog(null, "lISTA DE MUSICAS DISPONIVEL");
+                Catalogo catalogo = new Catalogo("","",0.0,"");
+                catalogo.MusicaPreCadastradas();
+                catalogo.listar();
             }
             else if (escolha == 2) {
                 JOptionPane.showMessageDialog(null, "Você escolheu: Atualizar");
