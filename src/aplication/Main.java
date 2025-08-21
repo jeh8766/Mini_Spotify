@@ -6,7 +6,7 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
 
-        String[] opcoes = { "Adicionar", "Lista de Musicas", "Atualizar", "Remover", "Sair" };
+        String[] opcoes = { "Adicionar musicas", "Lista de Musicas", "criar plalit ", "Remover", "Sair" };
         int escolha = -1;
         Usuario usuario = new Usuario();
         usuario.cadastrastro();
@@ -23,6 +23,9 @@ public class Main {
 
             if (escolha == 0) {
                 JOptionPane.showMessageDialog(null, "Você escolheu: Adicionar");
+                Catalogo catalogo = new Catalogo("","",0.0,"");
+                catalogo.AdicionarMidias();
+
 
             }
             else if (escolha == 1) {
