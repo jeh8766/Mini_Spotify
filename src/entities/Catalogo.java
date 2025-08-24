@@ -26,9 +26,9 @@ public class Catalogo {
 
 
     //error ArrayIndexOutOfBoundsException
-    public void listarMidias() {
+    public Midias listarMidias() {
         Catalogo[] opcoes = midias.toArray(new Catalogo[1]);
-        Catalogo escolha = (Catalogo) JOptionPane.showInputDialog(
+        Midias escolha = (Midias) JOptionPane.showInputDialog(
                 null,
                 "Escolha uma música:",
                 "Catálogo",
@@ -36,6 +36,7 @@ public class Catalogo {
                 null,
                 opcoes, opcoes[0]
         );
+        return escolha;
     }
 
     public void musicasPreCadastradas (){

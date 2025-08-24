@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Usuario {
+public class Usuario{
     private String nome;
     private String email;
     private String senha;
@@ -13,6 +13,10 @@ public class Usuario {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+    }
+
+    public Usuario(){
+
     }
 
     public void criarPlayist(){

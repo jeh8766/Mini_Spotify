@@ -7,6 +7,7 @@ import java.util.Objects;
 public class Playlist {
     private String nome;
     List<Midias> midias= new ArrayList<>();
+    Catalogo catalogo=new Catalogo();
 
     public Playlist(String nome) {
         this.nome = nome;
@@ -19,6 +20,13 @@ public class Playlist {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+
+
+// Adicionar música à playlist
+//    public void adicionarMusicaPlaylist(){
+//        midias.add(catalogo.listarMidias());
+//    }
 
     @Override
     public String toString() {

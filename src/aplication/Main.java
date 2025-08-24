@@ -54,10 +54,15 @@ public class Main {
                                     JOptionPane.showMessageDialog(null, "Você escolheu: Atualizar playlist");
                                     //Apagar playlist; Adicionar e remover mídia da playlist;
 
+
                                     break;
                                 case 2:
-                                    JOptionPane.showMessageDialog(null, "Você escolheu: visualizar playlist");
-                                    controle.listarPlaylist(user);
+                                    int number=Integer.parseInt(JOptionPane.showInputDialog("Digite 1 para visualizar playlist e 2 para adc musica"));
+                                    if (number==1){
+                                        controle.listarMidiasPlaylist(user);
+                                    } else{
+                                    JOptionPane.showMessageDialog(null, "Você escolheu: adc musica a playlist");
+                                    controle.adicionarMusicaPlaylist(user, catalogo);}
                                     //Visualizar playList e mídias contidas tal como sua duração total
                                     break;
                                 case 3:

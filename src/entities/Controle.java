@@ -1,12 +1,14 @@
 package entities;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Controle {
     private Set<Usuario> usuarios = new HashSet<>();
     Catalogo catalogo=new Catalogo();
+    Usuario usuario=new Usuario();
 
     public void cadastrarUsuario() {
         String nome = JOptionPane.showInputDialog("Digite o nome de usuário:");
@@ -20,6 +22,47 @@ public class Controle {
         }
     }
 
+    public Playlist listarPlaylists(Usuario user) {
+        Playlist[] opcoes = user.getPlaylists().toArray(new Playlist[0]);
+        Playlist escolha = (Playlist) JOptionPane.showInputDialog(
+                null,
+                "Escolha uma Playlist:",
+                "Catálogo",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opcoes, opcoes[0]
+        );
+        return escolha;
+    }
+
+    public void listarMidiasPlaylist(Usuario user) {
+        Playlist escolha = listarPlaylists(user);
+         for (Midias midia: escolha.midias){
+             JOptionPane.showMessageDialog(null,midia);
+         }
+    }
+
+
+//        Playlist[] opcoes = midias.toArray(new Catalogo[1]);
+//        Midias escolha = (Midias) JOptionPane.showInputDialog(
+//                null,
+//                "Escolha uma música:",
+//                "Catálogo",
+//                JOptionPane.QUESTION_MESSAGE,
+//                null,
+//                opcoes, opcoes[0]
+//        );
+//        return escolha;
+//    }
+
+        public void adicionarMusicaPlaylist(Usuario user, Catalogo catalogo){
+            Playlist playlistescolhida=listarPlaylists(user);
+            Midias midiaEscolhida=catalogo.listarMidias();
+            playlistescolhida.midias.add(midiaEscolhida);
+            JOptionPane.showMessageDialog(null, "midia adc");
+//        midias.add(catalogo.listarMidias());
+    }
+
     public void listarUsuarios() {
         StringBuilder sb = new StringBuilder();
         for (Usuario usuario : usuarios) {
@@ -28,9 +71,9 @@ public class Controle {
         JOptionPane.showMessageDialog(null, sb.toString());
     }
 
-    public void listarPlaylist(Usuario user) {
-        JOptionPane.showMessageDialog(null, "Playlists: \n" + user.listarPlaylists());
-    }
+//    public void listarPlaylist(Usuario user) {
+//        JOptionPane.showMessageDialog(null, "Playlists: \n" + user.listarPlaylists());
+//    }
 
     public Usuario buscarEmail(String email) {
         for (Usuario usuario : usuarios) {
