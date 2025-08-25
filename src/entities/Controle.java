@@ -50,7 +50,6 @@ public class Controle {
                 JOptionPane.showMessageDialog(null, midia);
             }
         }catch (NullPointerException e){
-            e.printStackTrace();
         }}
 //git teste
 
@@ -62,7 +61,6 @@ public class Controle {
             playlistescolhida.midias.add(midiaEscolhida);
             JOptionPane.showMessageDialog(null, "midia adc");
         }catch (Exception e){
-            e.printStackTrace();
         }}
 
     public void listarUsuarios() {
