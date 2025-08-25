@@ -1,4 +1,6 @@
 package entities;
+import aplication.Exception.ImputNullException;
+
 import javax.swing.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,6 +23,9 @@ public class Usuario{
 
     public void criarPlayist(){
         String playlistName=JOptionPane.showInputDialog(null, "Digite o nome da playlist:");
+        if ( playlistName.equals("")){
+            throw new ImputNullException(JOptionPane.showInputDialog(null,"obrigatorio preencher!!!"));
+        }
         if (playlists.add(new Playlist(playlistName))) {
             JOptionPane.showMessageDialog(null, "A Playlist " + playlistName + " foi criada.");
         }else {
@@ -78,20 +83,14 @@ public class Usuario{
         this.playlists = playlists;
     }
 
-//    public void cadastrastro(){
-//        JOptionPane.showMessageDialog(null,
-//                "<html><div style='text-align:center; color:#4B0082;'>"
-//                        + "<h2>Bem-vindo ao Mini Spotify!</h2>"
-//                        + "<p>Por favor, faça seu cadastro.</p>"
-//                        + "</div></html>",
-//                    "Boas-vindas",
-//                JOptionPane.INFORMATION_MESSAGE);
-//        this.nome = JOptionPane.showInputDialog("digite o seu nome de usuario");
-//        this.email = JOptionPane.showInputDialog("digite o seu gmail");
-//        this.senha = JOptionPane.showInputDialog("digite sua senha");
-//        JOptionPane.showMessageDialog(null,"cadastro concluido com sucesso",
-//                "Bem vindo",JOptionPane.WARNING_MESSAGE);
-//    }
+        public void intro(){
+        JOptionPane.showMessageDialog(null,
+                "<html><div style='text-align:center; color:#4B0082;'>"
+                        + "<h2>Bem-vindo ao Mini Spotify!</h2>"
+                        + "<p>Por favor, faça seu cadastro.</p>"
+                        + "</div></html>",
+                    "Boas-vindas",
+                JOptionPane.INFORMATION_MESSAGE);
 
-
+    }
 }

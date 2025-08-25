@@ -23,10 +23,7 @@ public class Playlist {
 
 
 
-// Adicionar música à playlist
-//    public void adicionarMusicaPlaylist(){
-//        midias.add(catalogo.listarMidias());
-//    }
+
 
     @Override
     public String toString() {

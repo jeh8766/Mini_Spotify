@@ -1,5 +1,7 @@
 package entities;
 
+import aplication.Exception.ImputNullException;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -8,10 +10,16 @@ import java.util.List;
 public class Catalogo {
     private ArrayList<Midias> midias=new ArrayList<>();
 
-    public void AdicionarMidias () {
+    public void AdicionarMidias () throws ImputNullException{
         try {
         String titulo = JOptionPane.showInputDialog("digite o titulo da midia a ser cadastrada");
+        if (titulo == null || titulo.equals("")){
+            throw new ImputNullException("obrigatorio preencher!!!");
+        }
         String artista = JOptionPane.showInputDialog("digite o nome do artista");
+            if (artista == null || artista.equals("")){
+                throw new ImputNullException("obrigatorio preencher!!!");
+            }
         double duracao = Double.parseDouble(JOptionPane.showInputDialog("digite a duração da midia"));
         String[] opcoesDeMidia = { "ROCK", "POP", "MPB", "JAZZ", "CLASSICA","ANIME","ELETRONICA","BRAZILIAN FUNK" };
         String genero =(String) JOptionPane.showInputDialog(null,"escolha o genero da midia",
@@ -20,14 +28,14 @@ public class Catalogo {
         JOptionPane.showMessageDialog(null,"cadastro concluido com sucesso",
                 "concluido",JOptionPane.WARNING_MESSAGE);
     }catch (Exception e){
-            JOptionPane.showMessageDialog(null,"digite somente numeros!!");
+            JOptionPane.showMessageDialog(null,"valor inserido errado !!");
         }
     }
 
 
     //error ArrayIndexOutOfBoundsException
     public Midias listarMidias() {
-        Catalogo[] opcoes = midias.toArray(new Catalogo[1]);
+        Catalogo[] opcoes = midias.toArray(new Midias[0]);
         Midias escolha = (Midias) JOptionPane.showInputDialog(
                 null,
                 "Escolha uma música:",

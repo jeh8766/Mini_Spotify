@@ -23,6 +23,11 @@ public class Controle {
     }
 
     public Playlist listarPlaylists(Usuario user) {
+
+        if (user.getPlaylists().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nenhuma playlist cadastrada.");
+            return null;
+        }
         Playlist[] opcoes = user.getPlaylists().toArray(new Playlist[0]);
         Playlist escolha = (Playlist) JOptionPane.showInputDialog(
                 null,
@@ -30,38 +35,34 @@ public class Controle {
                 "Catálogo",
                 JOptionPane.QUESTION_MESSAGE,
                 null,
-                opcoes, opcoes[0]
+                opcoes,
+                opcoes[0]
         );
         return escolha;
     }
 
     public void listarMidiasPlaylist(Usuario user) {
-        Playlist escolha = listarPlaylists(user);
-         for (Midias midia: escolha.midias){
-             JOptionPane.showMessageDialog(null,midia);
-         }
-    }
+        try {
 
 
-//        Playlist[] opcoes = midias.toArray(new Catalogo[1]);
-//        Midias escolha = (Midias) JOptionPane.showInputDialog(
-//                null,
-//                "Escolha uma música:",
-//                "Catálogo",
-//                JOptionPane.QUESTION_MESSAGE,
-//                null,
-//                opcoes, opcoes[0]
-//        );
-//        return escolha;
-//    }
+            Playlist escolha = listarPlaylists(user);
+            for (Midias midia : escolha.midias) {
+                JOptionPane.showMessageDialog(null, midia);
+            }
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }}
 
         public void adicionarMusicaPlaylist(Usuario user, Catalogo catalogo){
-            Playlist playlistescolhida=listarPlaylists(user);
-            Midias midiaEscolhida=catalogo.listarMidias();
+        try {
+
+            Playlist playlistescolhida = listarPlaylists(user);
+            Midias midiaEscolhida = catalogo.listarMidias();
             playlistescolhida.midias.add(midiaEscolhida);
             JOptionPane.showMessageDialog(null, "midia adc");
-//        midias.add(catalogo.listarMidias());
-    }
+        }catch (Exception e){
+            e.printStackTrace();
+        }}
 
     public void listarUsuarios() {
         StringBuilder sb = new StringBuilder();
