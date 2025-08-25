@@ -52,6 +52,7 @@ public class Controle {
         }catch (NullPointerException e){
             e.printStackTrace();
         }}
+//git teste
 
         public void adicionarMusicaPlaylist(Usuario user, Catalogo catalogo){
         try {

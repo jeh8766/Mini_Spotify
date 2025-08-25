@@ -15,6 +15,7 @@ public class Midias extends Catalogo{
         this.duracao=duracao;
         this.genero=genero;
     }
+//git teste
 
     public String getTitulo() {
         return titulo;

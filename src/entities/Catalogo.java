@@ -31,6 +31,7 @@ public class Catalogo {
             JOptionPane.showMessageDialog(null,"valor inserido errado !!");
         }
     }
+//git teste
 
 
     //error ArrayIndexOutOfBoundsException
