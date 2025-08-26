@@ -6,7 +6,7 @@ import entities.Usuario;
 import javax.swing.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InfoCadastroInvalidaException {
         Catalogo catalogo = new Catalogo();
         Controle controle = new Controle();
         catalogo.musicasPreCadastradas();
@@ -19,7 +19,12 @@ public class Main {
             escolhaDeLogin = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "MINI SPOTIFY", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoesDeLogin, opcoesDeLogin[0]);
             switch (escolhaDeLogin) {
                 case 0:
-                    controle.cadastrarUsuario();
+                	try {
+                		controle.cadastrarUsuario();
+                		
+                	}catch(InfoCadastroInvalidaException e) {
+                		JOptionPane.showMessageDialog(null, e.getMessage());
+                	}
                     break;
                 case 1:
                     String userEmail = JOptionPane.showInputDialog("Digite o email: ");

@@ -1,17 +1,30 @@
 package entities;
 
-import javax.swing.*;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.swing.JOptionPane;
+
+import aplication.InfoCadastroInvalidaException;
 
 public class Controle {
     private Set<Usuario> usuarios = new HashSet<>();
     Usuario usuario = new Usuario();
 
-    public void cadastrarUsuario() {
+    public void cadastrarUsuario() throws InfoCadastroInvalidaException {
         String nome = JOptionPane.showInputDialog("Digite o nome de usuário:");
+        if(nome == null || nome.equals("")) {
+        	throw new InfoCadastroInvalidaException("Digite um nome");
+        }
         String email = JOptionPane.showInputDialog("Digite o email:");
+        if(email == null || email.equals("")) {
+        	throw new InfoCadastroInvalidaException("Digite um email");
+        }
         String senha = JOptionPane.showInputDialog("Digite a senha:");
+        if(senha == null || senha.equals("")) {
+        	throw new InfoCadastroInvalidaException("Digite uma senha");
+        }
+        
         if (buscarEmail(email) == null) {
             usuarios.add(new Usuario(nome, email, senha));
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
