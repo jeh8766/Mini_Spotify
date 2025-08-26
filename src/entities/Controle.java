@@ -103,6 +103,28 @@ public class Controle {
         return null;
     }
 
+    public void removerMidiaPlaylist(Usuario user){
+        try {
+            Playlist playlistSelecionada = listarPlaylists(user);
+            if (playlistSelecionada == null) return;
+
+            if (playlistSelecionada.midias.isEmpty()){
+                JOptionPane.showMessageDialog(null,"Você não adicionou nenhum item à playlist ainda");
+                return;
+            }
+            Midias[] opcoes = playlistSelecionada.midias.toArray(new Midias[0]);
+            Midias midiaSelecionada = (Midias) JOptionPane.showInputDialog(null, "Selecione a midia que deseja remover:","Remover midia",JOptionPane.QUESTION_MESSAGE,null,opcoes,opcoes[0]);
+
+            if (midiaSelecionada != null){
+                playlistSelecionada.midias.remove(midiaSelecionada);
+                JOptionPane.showMessageDialog(null,"Midia removida com sucesso");
+            }
+
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Erro ao tentar remover a midia");
+        }
+    }
+
     public boolean validarSenha(String senha, String userEmail) {
         Usuario user = buscarEmail(userEmail);
         if (user == null) {

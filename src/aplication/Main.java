@@ -62,6 +62,7 @@ public class Main {
                                     // adc ou remover plYLIST... falta criar método de remover mídia de playlist
                                     controle.listarMidiasPlaylist(user);
                                     controle.adicionarMusicaPlaylist(user, catalogo);
+                                    controle.removerMidiaPlaylist(user);
 
                                     break;
                                 case 2:
