@@ -1,8 +1,11 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
+
+import javax.swing.JOptionPane;
 
 public class Playlist {
     private String nome;
@@ -11,8 +14,23 @@ public class Playlist {
     public Playlist(String nome) {
         this.nome = nome;
     }
+    
+    
 
-    public String getNome() {
+    public List<Midias> getMidias() {
+		return midias;
+	}
+    
+    public double duracao() {
+    	double duracion = 0;
+    	for(Midias midia : midias) {
+    		duracion += midia.getDuracao();
+    	}
+    	return duracion;
+    }
+    
+
+	public String getNome() {
         return nome;
     }
 
@@ -24,7 +42,7 @@ public class Playlist {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("- ").append(nome);
+        sb.append("- ").append(nome).append("- duração: ").append(duracao());
         return sb.toString();
     }
 

@@ -65,9 +65,13 @@ public class Controle {
 
     public void listarMidiasPlaylist(Usuario user) {
         try {
-
-
+        	      
             Playlist escolha = listarPlaylists(user);
+            
+            if(escolha.getMidias().isEmpty()) {
+            	JOptionPane.showMessageDialog(null, "Sem mídias adicionadas à PlayList");
+            }
+            
             for (Midias midia : escolha.midias) {
                 JOptionPane.showMessageDialog(null, midia);
             }

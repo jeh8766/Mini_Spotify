@@ -60,9 +60,30 @@ public class Main {
 
                                 case 1: //Falta a duração de cada playlist
                                     // adc ou remover plYLIST... falta criar método de remover mídia de playlist
-                                    controle.listarMidiasPlaylist(user);
-                                    controle.adicionarMusicaPlaylist(user, catalogo);
-                                    controle.removerMidiaPlaylist(user);
+                                	String[]opc = {"Listar mídias da PlayList", "Adicionar mídia à PlayList", "Remover mídia da PlayList","Cancelar"};
+                                	
+                                	int opcaoGerenciar = JOptionPane.showOptionDialog(
+                                            null,
+                                            "Escolha uma opção:",
+                                            "Mini Spotify: " + user.getNome(),
+                                            JOptionPane.DEFAULT_OPTION,
+                                            JOptionPane.QUESTION_MESSAGE,
+                                            null,
+                                            opc,
+                                            opc[0]);
+                                	switch (opcaoGerenciar) {
+									case 0:
+										controle.listarMidiasPlaylist(user);
+										break;
+									case 1:
+										controle.adicionarMusicaPlaylist(user, catalogo);
+										break;
+									case 2:
+										controle.removerMidiaPlaylist(user);
+										break;
+									default:
+										break;
+									}
 
                                     break;
                                 case 2:
