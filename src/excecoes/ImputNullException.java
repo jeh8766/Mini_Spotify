@@ -1,4 +1,4 @@
-package aplication;
+package excecoes;
 
 public class ImputNullException extends RuntimeException {
     public ImputNullException(String message) {

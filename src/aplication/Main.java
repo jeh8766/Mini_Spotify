@@ -3,6 +3,9 @@ package aplication;
 import entities.Catalogo;
 import entities.Controle;
 import entities.Usuario;
+import excecoes.ImputNullException;
+import excecoes.InfoCadastroInvalidaException;
+
 import javax.swing.*;
 
 public class Main {
@@ -54,12 +57,13 @@ public class Main {
                                         user.criarPlayist();
 
                                     } catch (ImputNullException e) {
-                                        System.out.println(e.getMessage());
+                                        JOptionPane.showMessageDialog(null,e.getMessage());
+                                    } catch (NullPointerException e){
+                                        break;
                                     }
                                     break;
 
                                 case 1: //Falta a duração de cada playlist
-                                    // adc ou remover plYLIST... falta criar método de remover mídia de playlist
                                 	String[]opc = {"Listar mídias da PlayList", "Adicionar mídia à PlayList", "Remover mídia da PlayList","Cancelar"};
                                 	
                                 	int opcaoGerenciar = JOptionPane.showOptionDialog(

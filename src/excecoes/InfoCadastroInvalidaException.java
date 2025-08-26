@@ -1,4 +1,4 @@
-package aplication;
+package excecoes;
 
 public class InfoCadastroInvalidaException extends Exception {
 	

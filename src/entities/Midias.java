@@ -46,6 +46,6 @@ public class Midias extends Catalogo {
     }
 
     public String toString() {
-        return "Titulo: " + titulo + " Artista: " + artista + " Duração: " + duracao + " Minutos " + " Genero: " + genero;
+        return "Titulo: " + titulo + " Artista: " + artista + " | " + duracao + " Minutos " + " | " + genero;
     }
 }

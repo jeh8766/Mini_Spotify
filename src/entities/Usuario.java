@@ -1,5 +1,5 @@
 package entities;
-import aplication.ImputNullException;
+import excecoes.ImputNullException;
 
 import javax.swing.*;
 import java.util.HashSet;
