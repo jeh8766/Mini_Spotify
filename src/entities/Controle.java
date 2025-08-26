@@ -42,7 +42,7 @@ public class Controle {
 
     }
 
-    public Playlist listarPlaylists(Usuario user) {
+    private Playlist buscarPlaylists(Usuario user) {
 
         if (user.getPlaylists().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nenhuma playlist cadastrada.");
@@ -64,7 +64,7 @@ public class Controle {
     public void listarMidiasPlaylist(Usuario user) {
         try {
 
-            Playlist escolha = listarPlaylists(user);
+            Playlist escolha = buscarPlaylists(user);
             if (escolha.getMidias().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Sem mídias adicionadas à PlayList");
             } else {
@@ -81,7 +81,7 @@ public class Controle {
 
     public void adicionarMusicaPlaylist(Usuario user, Catalogo catalogo) {
         try {
-            Playlist playlistescolhida = listarPlaylists(user);
+            Playlist playlistescolhida = buscarPlaylists(user);
             if (playlistescolhida != null) {
                 Midias midiaEscolhida = catalogo.listarMidias();
                 playlistescolhida.midias.add(midiaEscolhida);
@@ -102,7 +102,7 @@ public class Controle {
 
     public void removerMidiaPlaylist(Usuario user) {
         try {
-            Playlist playlistSelecionada = listarPlaylists(user);
+            Playlist playlistSelecionada = buscarPlaylists(user);
             if (playlistSelecionada == null) return;
 
             if (playlistSelecionada.midias.isEmpty()) {
