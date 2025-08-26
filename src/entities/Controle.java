@@ -1,14 +1,12 @@
 package entities;
 
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Controle {
     private Set<Usuario> usuarios = new HashSet<>();
-    Catalogo catalogo=new Catalogo();
-    Usuario usuario=new Usuario();
+    Usuario usuario = new Usuario();
 
     public void cadastrarUsuario() {
         String nome = JOptionPane.showInputDialog("Digite o nome de usuário:");
@@ -20,6 +18,17 @@ public class Controle {
         } else {
             JOptionPane.showMessageDialog(null, "Email já cadastrado.");
         }
+    }
+
+    public void intro() {
+        JOptionPane.showMessageDialog(null,
+                "<html><div style='text-align:center; color:Green;'>"
+                        + "<h2>Bem-vindo ao Mini Spotify!</h2>"
+                        + "<p>Por favor, faça seu cadastro.</p>"
+                        + "</div></html>",
+                "Boas-vindas",
+                JOptionPane.INFORMATION_MESSAGE);
+
     }
 
     public Playlist listarPlaylists(Usuario user) {
@@ -49,19 +58,20 @@ public class Controle {
             for (Midias midia : escolha.midias) {
                 JOptionPane.showMessageDialog(null, midia);
             }
-        }catch (NullPointerException e){
-        }}
-//git teste
+        } catch (NullPointerException e) {
+        }
+    }
 
-        public void adicionarMusicaPlaylist(Usuario user, Catalogo catalogo){
+    public void adicionarMusicaPlaylist(Usuario user, Catalogo catalogo) {
         try {
 
             Playlist playlistescolhida = listarPlaylists(user);
             Midias midiaEscolhida = catalogo.listarMidias();
             playlistescolhida.midias.add(midiaEscolhida);
             JOptionPane.showMessageDialog(null, "midia adc");
-        }catch (Exception e){
-        }}
+        } catch (Exception e) {
+        }
+    }
 
     public void listarUsuarios() {
         StringBuilder sb = new StringBuilder();
@@ -70,10 +80,6 @@ public class Controle {
         }
         JOptionPane.showMessageDialog(null, sb.toString());
     }
-
-//    public void listarPlaylist(Usuario user) {
-//        JOptionPane.showMessageDialog(null, "Playlists: \n" + user.listarPlaylists());
-//    }
 
     public Usuario buscarEmail(String email) {
         for (Usuario usuario : usuarios) {

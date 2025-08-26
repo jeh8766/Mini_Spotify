@@ -1,5 +1,4 @@
 package entities;
-//git teste
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +6,7 @@ import java.util.Objects;
 
 public class Playlist {
     private String nome;
-    List<Midias> midias= new ArrayList<>();
-    Catalogo catalogo=new Catalogo();
+    List<Midias> midias = new ArrayList<>();
 
     public Playlist(String nome) {
         this.nome = nome;
@@ -21,9 +19,6 @@ public class Playlist {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-
-
 
 
     @Override

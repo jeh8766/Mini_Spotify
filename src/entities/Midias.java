@@ -1,21 +1,17 @@
 package entities;
 
-import javax.swing.*;
-import java.util.ArrayList;
-
-public class Midias extends Catalogo{
+public class Midias extends Catalogo {
     private String titulo;
     private String artista;
     private double duracao;
     private String genero;
 
-    public Midias (String titulo, String artista, double duracao, String genero){
-        this.titulo=titulo;
-        this.artista=artista;
-        this.duracao=duracao;
-        this.genero=genero;
+    public Midias(String titulo, String artista, double duracao, String genero) {
+        this.titulo = titulo;
+        this.artista = artista;
+        this.duracao = duracao;
+        this.genero = genero;
     }
-//git teste
 
     public String getTitulo() {
         return titulo;
@@ -48,5 +44,8 @@ public class Midias extends Catalogo{
     public void setGenero(String genero) {
         this.genero = genero;
     }
-    public String toString (){return "Titulo: "+titulo+" Artista: "+artista+" Duração: "+duracao+" Minutos "+" Genero: "+genero;}
+
+    public String toString() {
+        return "Titulo: " + titulo + " Artista: " + artista + " Duração: " + duracao + " Minutos " + " Genero: " + genero;
+    }
 }

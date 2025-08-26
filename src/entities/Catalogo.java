@@ -1,11 +1,9 @@
 package entities;
 
-import aplication.Exception.ImputNullException;
+import aplication.ImputNullException;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
 
 public class Catalogo {
     private ArrayList<Midias> midias=new ArrayList<>();
@@ -39,7 +37,7 @@ public class Catalogo {
         Catalogo[] opcoes = midias.toArray(new Midias[0]);
         Midias escolha = (Midias) JOptionPane.showInputDialog(
                 null,
-                "Escolha uma música:",
+                "Catálogo de músicas:",
                 "Catálogo",
                 JOptionPane.QUESTION_MESSAGE,
                 null,

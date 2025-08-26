@@ -1,5 +1,5 @@
 package entities;
-import aplication.Exception.ImputNullException;
+import aplication.ImputNullException;
 
 import javax.swing.*;
 import java.util.HashSet;
@@ -18,7 +18,6 @@ public class Usuario{
     }
 
     public Usuario(){
-
     }
 
     public void criarPlayist(){
@@ -83,14 +82,5 @@ public class Usuario{
         this.playlists = playlists;
     }
 
-        public void intro(){
-        JOptionPane.showMessageDialog(null,
-                "<html><div style='text-align:center; color:#4B0082;'>"
-                        + "<h2>Bem-vindo ao Mini Spotify!</h2>"
-                        + "<p>Por favor, faça seu cadastro.</p>"
-                        + "</div></html>",
-                    "Boas-vindas",
-                JOptionPane.INFORMATION_MESSAGE);
 
-    }
 }

@@ -1,36 +1,31 @@
 package aplication;
-import aplication.Exception.ImputNullException;
+
 import entities.Catalogo;
 import entities.Controle;
 import entities.Usuario;
 import javax.swing.*;
-//git teste
+
 public class Main {
     public static void main(String[] args) {
-        Catalogo catalogo=new Catalogo();
+        Catalogo catalogo = new Catalogo();
         Controle controle = new Controle();
-        Usuario usuario = new Usuario();
         catalogo.musicasPreCadastradas();
         String[] opcoesDeLogin = {"Cadastrar-se", "Fazer Login", "Sair"};
         int escolhaDeLogin = 0;
         int escolha = -1;
         escolha++;
-        usuario.intro();
+        controle.intro();
         do {
             escolhaDeLogin = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "MINI SPOTIFY", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoesDeLogin, opcoesDeLogin[0]);
             switch (escolhaDeLogin) {
                 case 0:
-                    //cadatro
                     controle.cadastrarUsuario();
-                    //Não está salvando o usuário corretamente. Após fazer login e deslogar, a lista de usuários é reiniciada
                     break;
                 case 1:
-                    //Login
                     String userEmail = JOptionPane.showInputDialog("Digite o email: ");
                     String userSenha = JOptionPane.showInputDialog("Digite a senha: ");
-                    //controle.validarSenha(userSenha, userEmail);
 
-                    String[] opcoes = {"Criar Playlist", "Gerenciar playlist","Catálogo de musicas", "Adicionar música", "Sair"};
+                    String[] opcoes = {"Criar Playlist", "Gerenciar playlists", "Catálogo de musicas", "Adicionar música","Buscar mídia", "Sair"};
 
                     if (controle.validarSenha(userSenha, userEmail)) {
                         Usuario user = controle.buscarEmail(userEmail);
@@ -40,7 +35,7 @@ public class Main {
                             escolha = JOptionPane.showOptionDialog(
                                     null,
                                     "Escolha uma opção:",
-                                    "Mini Spotify: "+user.getNome(),
+                                    "Mini Spotify: " + user.getNome(),
                                     JOptionPane.DEFAULT_OPTION,
                                     JOptionPane.QUESTION_MESSAGE,
                                     null,
@@ -53,39 +48,35 @@ public class Main {
                                     try {
                                         user.criarPlayist();
 
-                                    }catch (ImputNullException e){
+                                    } catch (ImputNullException e) {
                                         System.out.println(e.getMessage());
                                     }
                                     break;
-                                    
-                                case 1:
-                                    int number=Integer.parseInt(JOptionPane.showInputDialog("Digite 1 para visualizar playlist e 2 para adc musica"));
-                                    if (number==1){
-                                        controle.listarMidiasPlaylist(user);
-                                    } else{
-                                        JOptionPane.showMessageDialog(null, "Você escolheu: adc musica a playlist");
-                                        controle.adicionarMusicaPlaylist(user, catalogo);}
-                                    //Visualizar playList e mídias contidas tal como sua duração total
-                                    break;
 
+                                case 1: //Falta a duração de cada playlist
+                                    // adc ou remover plYLIST... falta criar método de remover mídia de playlist
+                                    controle.listarMidiasPlaylist(user);
+                                    controle.adicionarMusicaPlaylist(user, catalogo);
+
+                                    break;
                                 case 2:
-                                    JOptionPane.showMessageDialog(null, "Você escolheu: catálogo de musicas");
                                     catalogo.listarMidias();
-                                    //Armazena todas as mídias; Permite buscar músicas por título, artista ou gênero; talvez adc mídia à playlist?
                                     break;
                                 case 3:
-                                    JOptionPane.showMessageDialog(null, "Adicionar música");
+                                    JOptionPane.showMessageDialog(null, "Adicionar música ao Catálogo.");
                                     try {
                                         catalogo.AdicionarMidias();
 
-                                    }catch (ImputNullException e ){
+                                    } catch (ImputNullException e) {
                                         System.out.println(e.getMessage());
                                     }
                                     break;
-                                case 4:
+                                case 4://falta buscar mídia por título, artista ou gênero
+                                    break;
+                                case 5:
                                     JOptionPane.showMessageDialog(null, "Deslogando");
                             }
-                        } while (escolha != 4);
+                        } while (escolha != 5);
                     } else {
                         JOptionPane.showMessageDialog(null, "Tente novamente");
                     }
@@ -97,51 +88,3 @@ public class Main {
         } while (escolhaDeLogin != 2);
     }
 }
-
-//    public static void main(String[] args) {
-//
-//        String[] opcoes = { "Adicionar musicas", "Lista de Musicas", "criar plalit ", "Remover", "Sair" };
-//        int escolha = -1;
-//        Usuario usuario = new Usuario();
-//        usuario.cadastro();
-//        while (escolha !=4) {
-//             escolha = JOptionPane.showOptionDialog(
-//                    null,
-//                    "Escolha uma opção:",
-//                    "mini Spotify: "+usuario.getNome(),
-//                    JOptionPane.DEFAULT_OPTION,
-//                    JOptionPane.QUESTION_MESSAGE,
-//                    null,opcoes,opcoes[0]
-//
-//            );
-//
-//            if (escolha == 0) {
-//                JOptionPane.showMessageDialog(null, "Você escolheu: Adicionar");
-//                Catalogo catalogo = new Catalogo("","",0.0,"");
-//                catalogo.AdicionarMidias();
-//
-//
-//            }
-//            else if (escolha == 1) {
-//                JOptionPane.showMessageDialog(null, "lISTA DE MUSICAS DISPONIVEL");
-//                Catalogo catalogo = new Catalogo("","",0.0,"");
-//                catalogo.MusicaPreCadastradas();
-//                catalogo.listar();
-//            }
-//            else if (escolha == 2) {
-//                JOptionPane.showMessageDialog(null, "Você escolheu: Atualizar");
-//            }
-//            else if (escolha == 3) {
-//                JOptionPane.showMessageDialog(null, "Você escolheu: Remover");
-//            }
-//            else if (escolha == 4) {
-//                JOptionPane.showMessageDialog(null, "Saindo do sistema...");
-//            }
-//            else {
-//                JOptionPane.showMessageDialog(null, "Opção inválida!");
-//            }
-//        }
-//
-//
-//
-//    }
