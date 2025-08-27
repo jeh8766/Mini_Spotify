@@ -101,7 +101,7 @@ public class Main {
                                         System.out.println(e.getMessage());
                                     }
                                     break;
-                                case 4://falta buscar mídia por título, artista ou gênero
+                                case 4:
                                     catalogo.buscarMidias();
                                     break;
                                 case 5:

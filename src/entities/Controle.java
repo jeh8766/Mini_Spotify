@@ -4,6 +4,9 @@ import excecoes.InfoCadastroInvalidaException;
 import javax.swing.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 
 public class Controle {
     private Set<Usuario> usuarios = new HashSet<>();
@@ -15,8 +18,12 @@ public class Controle {
             throw new InfoCadastroInvalidaException("Digite um nome");
         }
         String email = JOptionPane.showInputDialog("Digite o email:");
-        if (email == null || email.equals("")) {
-            throw new InfoCadastroInvalidaException("Digite um email");
+        String regex = "^[A-Za-z0-9+_.-]+@gmail\\.com$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+
+        if (!matcher.matches()) {
+            throw new InfoCadastroInvalidaException("Digite um email valido");
         }
         String senha = JOptionPane.showInputDialog("Digite a senha:");
         if (senha == null || senha.equals("")) {
