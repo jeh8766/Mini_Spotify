@@ -20,21 +20,27 @@ public class Playlist {
     public List<Midias> getMidias() {
 		return midias;
 	}
-    
-    public String duracao() {
-    	double totalMinutes = 0;
-    	for(Midias midia : midias) {
-    		totalMinutes += midia.getDuracao();
-    	}
-        int minutos = (int) totalMinutes;
-        int segundos = (int) Math.round((totalMinutes - minutos)* 60);
-        if (segundos == 60) {
-            minutos++;
-            segundos = 0;
-        }
-        return String.format("%02d:%02d", minutos, segundos);
+
+    private int converterTempoEmSegundos(String tempo){
+        String[] partes = tempo.split(":");
+        int minutos = Integer.parseInt(partes[0]);
+        int segundos = Integer.parseInt(partes[1]);
+        return minutos * 60 + segundos;
     }
-    
+
+    private String duracao(){
+        StringBuilder sb = new StringBuilder();
+        int somaDeDuracoes=0;
+        for (Midias midia:midias){
+            somaDeDuracoes+= converterTempoEmSegundos(midia.getDuracao());
+        }
+        int hora = somaDeDuracoes / 3600;
+        int minutos = (somaDeDuracoes % 3600) / 60;
+        int segundos = somaDeDuracoes % 60;
+
+        sb.append(String.format("%02d:%02d:%02d", hora, minutos, segundos));
+        return sb.toString();
+    }
 
 	public String getNome() {
         return nome;

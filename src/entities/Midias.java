@@ -29,8 +29,9 @@ public class Midias extends Catalogo {
         this.artista = artista;
     }
 
-    public double getDuracao() {
-        return duracao;
+    public String getDuracao() {
+        String duracaoString=String.valueOf(duracao);
+        return duracaoString.replace(".",":");
     }
 
     public void setDuracao(double duracao) {
