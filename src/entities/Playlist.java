@@ -21,12 +21,18 @@ public class Playlist {
 		return midias;
 	}
     
-    public double duracao() {
-    	double duracion = 0;
+    public String duracao() {
+    	double totalMinutes = 0;
     	for(Midias midia : midias) {
-    		duracion += midia.getDuracao();
+    		totalMinutes += midia.getDuracao();
     	}
-    	return duracion;
+        int minutos = (int) totalMinutes;
+        int segundos = (int) Math.round((totalMinutes - minutos)* 60);
+        if (segundos == 60) {
+            minutos++;
+            segundos = 0;
+        }
+        return String.format("%02d:%02d", minutos, segundos);
     }
     
 
@@ -40,11 +46,10 @@ public class Playlist {
 
 
     @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("- ").append(nome).append("- duração: ").append(duracao());
-        return sb.toString();
-    }
+public String toString() {
+    return "- " + nome + " - duração: " + duracao();
+}
+
 
     @Override
     public boolean equals(Object o) {
