@@ -88,7 +88,6 @@ public class Main {
 									default:
 										break;
 									}
-
                                     break;
                                 case 2:
                                     catalogo.listarMidias();
@@ -103,6 +102,7 @@ public class Main {
                                     }
                                     break;
                                 case 4://falta buscar mídia por título, artista ou gênero
+                                    catalogo.buscarMidias();
                                     break;
                                 case 5:
                                     JOptionPane.showMessageDialog(null, "Deslogando");
